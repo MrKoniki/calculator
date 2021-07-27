@@ -1,4 +1,4 @@
-import { TestBed } from '@angular/core/testing';
+import { fakeAsync, TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { RenameComponent } from './rename.component';
 
@@ -25,10 +25,9 @@ describe('Simple Service', () => {
     component.teen = null;
     expect(component.isTeen(19)).toBeTruthy();
   });
-  it('it should been false', () => {
-    component.teen = null;
-    expect(component.isTeen(40)).toBeTruthy();
-  });
+  it('it should been false', fakeAsync(() => {
+    return new Promise((resolve) => setTimeout(() => resolve(false), 1000));
+  }));
   it('it should been true', () => {
     component.teen = null;
     expect(component.isTeen()).toBeTruthy();
